@@ -7,6 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
-        //
+        'name' => $faker->name,
+        'category_id' => \App\Category::all()->random()
     ];
 });

@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
- 
+        return response()->json(Category::all(), 200);
     }
 
     public function create()
