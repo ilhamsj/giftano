@@ -25,7 +25,7 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        //
+        return new CategoryResource(Category::find($id));
     }
 
     public function edit($id)

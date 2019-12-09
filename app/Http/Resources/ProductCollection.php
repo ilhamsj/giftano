@@ -18,5 +18,6 @@ class ProductCollection extends ResourceCollection
             'data' => ProductResource::collection($this->collection),
             'meta' => ['jumlah_produk' => $this->collection->count()],
         ];
+
     }
 }
