@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="">
-    <img class="img-fluid" src="holder.js/1600x600?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+    <img class="img-fluid" data-src="holder.js/1600x600?auto=yes&random=yes&textmode=exact" alt="" srcset="">
 </section>
 
 <section class="py-4">
@@ -16,7 +16,7 @@
             <div class="col-6 col-md-2 mb-4">
                 <div class="card border-0 bg-transparent">
                     <div class="card-img-top">
-                        <img class="img-fluid" style="border-radius:1rem" src="holder.js/500x700?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                        <img class="img-fluid" style="border-radius:1rem" data-src="holder.js/500x700?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                     </div>
                     <div class="card-body text-center">
                         {{ $item->name}}
@@ -39,7 +39,7 @@
                 <div class="card border-0 bg-transparent">
                     <div class="card-img-top">
                         <img class="img-fluid" style="border-radius:1rem"
-                            src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                            data-src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                     </div>
                     <div class="card-body">
                         {{ \Faker\Factory::create()->name}}
@@ -68,7 +68,7 @@
             <div class="col-6 col-md-3 mb-4">
                 <div class="card border-0 bg-transparent">
                     <div class="card-img-top">
-                        <img class="img-fluid" style="border-radius:1rem" src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                        <img class="img-fluid" style="border-radius:1rem" data-src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                     </div>
                     <div class="card-body">
                         {{ $item->name}}

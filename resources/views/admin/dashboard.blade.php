@@ -72,13 +72,14 @@
 <script>
 
   $(document).ready(function () {
-
+    
     // show data
+    var url = '{{ route("product.index") }}';
     var table = $('table').DataTable({
         responsive: true,
         processing: true,
         serverSide: true,
-        ajax: "{{ route('product.index') }}",
+        ajax: url,
         columns: [
             {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'name', name: 'name' },

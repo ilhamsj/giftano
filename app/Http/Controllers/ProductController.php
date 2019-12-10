@@ -11,7 +11,6 @@ class ProductController extends Controller
 {
     public function index()
     {
-
         $items = Product::all();
 
         return datatables($items)
@@ -23,7 +22,6 @@ class ProductController extends Controller
             })
             ->rawColumns(['action'])
             ->toJson();
-
     }
 
     public function create()
