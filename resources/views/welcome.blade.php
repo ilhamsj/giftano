@@ -12,19 +12,18 @@
             <div class="col-12 mb-4">
                 <h3>Categories</h3>
             </div>
-            @for ($i = 0; $i < 6; $i++)  
+            @for ($i = 0; $i < 6; $i++)
             <div class="col-6 col-md-2 mb-4">
                 <div class="card border-0 bg-transparent">
                     <div class="card-img-top">
                         <img class="img-fluid" style="border-radius:1rem" src="holder.js/500x700?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                     </div>
                     <div class="card-body text-center">
-                            {{ \Faker\Factory::create()->name}}
+                        {{ \Faker\Factory::create()->name}}
                     </div>
                 </div>
             </div>
             @endfor
-            
         </div>
     </div>
 </section>
@@ -35,14 +34,15 @@
             <div class="col-12 mb-4">
                 <h3>Featured Topics</h3>
             </div>
-            @for ($i = 0; $i < 4; $i++)  
+            @for ($i = 0; $i < 4; $i++)
             <div class="col-6 col-md-3 mb-4">
                 <div class="card border-0 bg-transparent">
                     <div class="card-img-top">
-                        <img class="img-fluid" style="border-radius:1rem" src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                        <img class="img-fluid" style="border-radius:1rem"
+                            src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                     </div>
                     <div class="card-body">
-                            {{ \Faker\Factory::create()->name}}
+                        {{ \Faker\Factory::create()->name}}
                     </div>
                 </div>
             </div>
@@ -63,15 +63,15 @@
                     </div>
                 </div>
             </div>
-        
-            @for ($i = 0; $i < 3; $i++)  
+
+            @for ($i = 0; $i < 3; $i++)
             <div class="col-6 col-md-3 mb-4">
                 <div class="card border-0 bg-transparent">
                     <div class="card-img-top">
                         <img class="img-fluid" style="border-radius:1rem" src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                     </div>
                     <div class="card-body">
-                            {{ \Faker\Factory::create()->name}}
+                        {{ \Faker\Factory::create()->name}}
                     </div>
                 </div>
             </div>
