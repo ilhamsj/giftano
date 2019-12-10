@@ -47,12 +47,12 @@
             @csrf
             <div class="form-group">
               <label for="">Name</label>
-              <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+              <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
             </div>
 
             <div class="form-group">
               <label for="">Cover</label>
-              <input type="file" class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId">
+              <input type="file" class="form-control-file" name="image" id="image" placeholder="" aria-describedby="fileHelpId">
             </div>
 
           </form>
@@ -60,7 +60,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="btnAction">Save</button>
+        <button type="button" class="btn btn-primary" id="btnSave">Save</button>
       </div>
     </div>
   </div>
@@ -90,12 +90,35 @@
     // create - show modal
     $('#addNew').click(function (e) { 
       e.preventDefault();
+      $('#btnUpdate').attr('id', 'btnSave').text('Save')
+
       $('#modelId').modal('show');
+    });
+
+    // store data
+    $('#modelId').on('click', '#btnSave', function (e) {
+      e.preventDefault()
+      var data = $('form').serialize();
+      $.ajax({
+        type: "POST",
+        url: "{{ route('product.store') }}",
+        data: data,
+        // contentType: false,
+        // cache: false,
+        // processData: false,
+        success: function (response) {
+          console.log(response);
+          
+        }
+      });
+      
     });
 
     // edit - show modal
     $('table').on('click', '.btnEdit', function (e) {
       e.preventDefault();
+
+      $('#btnSave').attr('id', 'btnUpdate').text('Update')
       
       $.ajax({
         type: "GET",
@@ -122,6 +145,7 @@
       });
     });
 
+    // store
   });
   </script>
 @endpush

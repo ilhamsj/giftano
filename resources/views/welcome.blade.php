@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="">
-    <img class="img-fluid" data-src="holder.js/1600x600?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+    <img class="img-fluid" data-src="holder.js/1349x496?auto=yes&random=yes&textmode=exact" alt="" srcset="">
 </section>
 
 <section class="py-4">

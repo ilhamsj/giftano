@@ -8,37 +8,54 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ env('APP_NAME') }}</title>
   <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
+  <style>
+    #mainNav {
+      font-size: 12pt;
+    }
+  </style>
   @stack('styles')
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-sm navbar-light bg-light py-2">
-    <div class="container">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-          aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+@php
+    $menu = [
+      'Home' => [
+        'url' => route('welcome'),
+        'icon' => '',
+      ],
+      'Product' => [
+        'url' => route('admin'),
+        'icon' => '',
+      ],
+      'Category' => [
+        'url' => route('category.index'),
+        'icon' => '',
+      ],
+      'Service' => [
+        'url' => route('category.index'),
+        'icon' => '',
+      ],
+    ];
+@endphp
+
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand font-weight-bold" href="index.html">{{ env('APP_NAME') }}</a>
+      <button class="navbar-toggler navbar-toggler-right p-2" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
       </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownId">
-              <a class="dropdown-item" href="#">Action 1</a>
-              <a class="dropdown-item" href="#">Action 2</a>
-            </div>
-          </li>
-        </ul>
-      </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+          @foreach ($menu as $key => $val)
+            <li class="nav-item {{ $val['url'] == URL::current() ? '' : ''}}">
+                <a class="nav-link" href="{{ $val['url']}}">{{ $key }}</a>
+            </li>
+          @endforeach
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <main class="">
     @yield('content')
