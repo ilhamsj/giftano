@@ -79,7 +79,7 @@
         responsive: true,
         processing: true,
         serverSide: true,
-        ajax: url,
+        ajax: '/api/v1/product',
         columns: [
             { data: 'action', name: 'action', orderable: false, searchable: false },
             { data: 'name', name: 'name' },
