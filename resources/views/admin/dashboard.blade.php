@@ -14,7 +14,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered">
+              <table class="table table-bordered" data-url="{{ route("product.index") }}">
                 <thead>
                   <tr>
                     <th>Action</th>
@@ -74,16 +74,16 @@
   $(document).ready(function () {
     
     // show data
-    var url = '{{ route("product.index") }}';
+    var url = $('table').attr('data-url');
     var table = $('table').DataTable({
         responsive: true,
         processing: true,
         serverSide: true,
         ajax: url,
         columns: [
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-            {data: 'name', name: 'name' },
-            {data: 'category_id', name: 'category_id' },
+            { data: 'action', name: 'action', orderable: false, searchable: false },
+            { data: 'name', name: 'name' },
+            { data: 'category_id', name: 'category_id' },
         ],
     });
 
