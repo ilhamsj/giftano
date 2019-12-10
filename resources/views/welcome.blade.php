@@ -58,7 +58,7 @@
                 <div class="card border-0 bg-transparent">
                     <div class="card-body">
                         <span style="font-size: x-large">
-                            Why trusted with <strong>customer voice ?</strong>
+                            Why trusted with <strong>{{ env('APP_NAME') }} ?</strong>
                         </span>
                     </div>
                 </div>

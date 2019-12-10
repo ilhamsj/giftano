@@ -98,17 +98,19 @@
     // store data
     $('#modelId').on('click', '#btnSave', function (e) {
       e.preventDefault()
-      var data = $('form').serialize();
+
+      var form = $('form')[0];
+      var data = new FormData(form);
+
       $.ajax({
         type: "POST",
         url: "{{ route('product.store') }}",
         data: data,
-        // contentType: false,
-        // cache: false,
-        // processData: false,
+        contentType: false,
+        processData: false,
+        cache: false,
         success: function (response) {
           console.log(response);
-          
         }
       });
       

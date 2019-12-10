@@ -63,11 +63,7 @@
 
   <footer class="py-4 border-top">
     <div class="container">
-      <div class="row">
-        <div class="col-12 col-md mb-4">
-          <h1>{{ env('APP_NAME') }}</h1>
-            © 2019 {{ env('APP_NAME') }}. All rights reserved.
-        </div>
+      <div class="row flex-row-reverse">
         <div class="col col-md-2">
           <h6>{{ env('APP_NAME') }}</h6>
             <a href="#" class="text-muted">About</a><br>
@@ -88,6 +84,10 @@
             <a href="API" class="text-muted">API</a> <br/>
             <a href="Apps" class="text-muted">Apps</a> <br/>
             <a href="Places" class="text-muted">Places</a> <br/>
+        </div>
+        <div class="col-12 col-md mb-4">
+          <h1>{{ env('APP_NAME') }}</h1>
+            © 2019 {{ env('APP_NAME') }}. All rights reserved.
         </div>
       </div>
     </div>
