@@ -8,33 +8,33 @@
 
 <section class="py-4">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-12 mb-4">
                 <h3>Categories</h3>
             </div>
-            @for ($i = 0; $i < 6; $i++)
+            @foreach ($categories as $item)
             <div class="col-6 col-md-2 mb-4">
                 <div class="card border-0 bg-transparent">
                     <div class="card-img-top">
                         <img class="img-fluid" style="border-radius:1rem" src="holder.js/500x700?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                     </div>
                     <div class="card-body text-center">
-                        {{ \Faker\Factory::create()->name}}
+                        {{ $item->name}}
                     </div>
                 </div>
             </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 </section>
 
 <section class="py-4 bg-light ">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-12 mb-4">
                 <h3>Featured Topics</h3>
             </div>
-            @for ($i = 0; $i < 4; $i++)
+            @foreach ($products as $item)
             <div class="col-6 col-md-3 mb-4">
                 <div class="card border-0 bg-transparent">
                     <div class="card-img-top">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 </section>
@@ -71,7 +71,7 @@
                         <img class="img-fluid" style="border-radius:1rem" src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                     </div>
                     <div class="card-body">
-                        {{ \Faker\Factory::create()->name}}
+                        {{ $item->name}}
                     </div>
                 </div>
             </div>

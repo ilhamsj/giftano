@@ -11,7 +11,19 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return new ProductCollection(Product::all());
+
+        $items = Product::all();
+
+        return datatables($items)
+            ->addIndexColumn()
+            ->addColumn('action', function ($items) {
+                return 
+                '<a href="" data-url="'.route('product.update', $items->id).'" data-edit="'.route('product.edit', $items->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i></span></a>
+                 <a href="" data-url="'.route('product.destroy', $items->id).'" class="btnDestroy btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i></span></a>';
+            })
+            ->rawColumns(['action'])
+            ->toJson();
+
     }
 
     public function create()
