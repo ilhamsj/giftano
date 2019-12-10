@@ -74,12 +74,12 @@
   $(document).ready(function () {
     
     // show data
-    var url = $('table').attr('data-url');
+    var url = '/api/v1/product';
     var table = $('table').DataTable({
         responsive: true,
         processing: true,
         serverSide: true,
-        ajax: '/api/v1/product',
+        ajax: url,
         columns: [
             { data: 'action', name: 'action', orderable: false, searchable: false },
             { data: 'name', name: 'name' },
@@ -96,11 +96,10 @@
     // edit - show modal
     $('table').on('click', '.btnEdit', function (e) {
       e.preventDefault();
-
-      var url = $(this).attr('data-url');
+      
       $.ajax({
         type: "GET",
-        url: url,
+        url: url+ '/' + $(this).attr('data-url'),
         success: function (response) {
           console.log(response);
         }
@@ -113,22 +112,14 @@
     $('table').on('click', '.btnDestroy', function (e) {
       e.preventDefault();
 
-      var url = $(this).attr('data-url');
       $.ajax({
-        type: "GET",
-        url: url,
+        type: "DELETE",
+        url: url+ '/' + $(this).attr('data-url'),
         success: function (response) {
-          $.ajax({
-            type: "DELETE",
-            url: url,
-            success: function (response) {
-              console.log(response);
-              table.draw()
-            }
-          });
+          console.log(response);
+          table.draw()
         }
       });
-      
     });
 
   });
