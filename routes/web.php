@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/', 'PageController@welcome');
-Route::get('/admin', 'PageController@admin');
+Route::get('/', 'PageController@welcome')->name('welcome');
+Route::get('/admin', 'PageController@admin')->name('admin');

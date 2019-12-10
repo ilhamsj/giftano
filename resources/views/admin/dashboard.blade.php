@@ -5,7 +5,7 @@
 <section>
   <div class="container py-4">
     <div class="row justify-content-center">
-      <div class="col-8">
+      <div class="col-12 col-md-8">
         <div class="card mb-4">
           <div class="card-header py-3">
             <a href="" id="addNew" class="font-weight-bold text-primary">
@@ -13,15 +13,17 @@
             </a>
           </div>
           <div class="card-body">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Action</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                </tr>
-              </thead>
-            </table>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Action</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -58,7 +60,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary" id="btnAction">Save</button>
       </div>
     </div>
   </div>
@@ -68,13 +70,11 @@
 
 @push('scripts')
 <script>
-  $('#addNew').click(function (e) { 
-    e.preventDefault();
-    $('#modelId').modal('show');
-  });
 
   $(document).ready(function () {
-    $('table').DataTable({
+
+    // show data
+    var table = $('table').DataTable({
         responsive: true,
         processing: true,
         serverSide: true,
@@ -85,6 +85,51 @@
             {data: 'category_id', name: 'category_id' },
         ],
     });
+
+    // create - show modal
+    $('#addNew').click(function (e) { 
+      e.preventDefault();
+      $('#modelId').modal('show');
+    });
+
+    // edit - show modal
+    $('table').on('click', '.btnEdit', function (e) {
+      e.preventDefault();
+
+      var url = $(this).attr('data-url');
+      $.ajax({
+        type: "GET",
+        url: url,
+        success: function (response) {
+          console.log(response);
+        }
+      });
+      
+      $('#modelId').modal('show');
+    });
+
+    // delete
+    $('table').on('click', '.btnDestroy', function (e) {
+      e.preventDefault();
+
+      var url = $(this).attr('data-url');
+      $.ajax({
+        type: "GET",
+        url: url,
+        success: function (response) {
+          $.ajax({
+            type: "DELETE",
+            url: url,
+            success: function (response) {
+              console.log(response);
+              table.draw()
+            }
+          });
+        }
+      });
+      
+    });
+
   });
   </script>
 @endpush

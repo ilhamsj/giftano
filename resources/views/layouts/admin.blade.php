@@ -11,7 +11,33 @@
   </head>
 
   <body>
+    @php
+        $menu = [
+          'Home' => [
+            'url' => route('welcome'),
+            'icon' => '',
+          ],
+          'Product' => [
+            'url' => route('admin'),
+            'icon' => '',
+          ],
+          'Category' => [
+            'url' => route('category.index'),
+            'icon' => '',
+          ],
+        ];
+    @endphp
 
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <ul class="nav navbar-nav">
+          @foreach ($menu as $key => $val)
+            <li class="nav-item {{ $val['url'] == URL::current() ? 'active' : ''}}">
+                <a class="nav-link" href="{{ $val['url']}}">{{ $key}}</a>
+            </li>
+          @endforeach
+        </ul>
+    </nav>
+      
     @yield('content')
   
     <script src="{{ secure_url('js/app.js') }}"></script>
