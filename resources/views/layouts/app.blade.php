@@ -13,7 +13,7 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-sm navbar-light bg-light py-4" style="font-size: large">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light py-2">
     <div class="container">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -47,11 +47,11 @@
   <footer class="py-4 border-top">
     <div class="container">
       <div class="row">
-        <div class="col-9">
+        <div class="col-12 col-md mb-4">
           <h1>{{ env('APP_NAME') }}</h1>
             © 2019 {{ env('APP_NAME') }}. All rights reserved.
         </div>
-        <div class="col">
+        <div class="col col-md-2">
           <h6>{{ env('APP_NAME') }}</h6>
             <a href="#" class="text-muted">About</a><br>
             <a href="#" class="text-muted">Help</a><br>
@@ -62,7 +62,7 @@
             <a href="#" class="text-muted">Privacy</a><br>
             <a href="#" class="text-muted">Playoffs</a><br>
         </div>
-        <div class="col">
+        <div class="col col-md-2">
             <h6>Feature</h6>
             <a href="Shop" class="text-muted">Shop</a> <br/>
             <a href="Testimonials" class="text-muted">Testimonials</a> <br/>
