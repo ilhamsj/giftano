@@ -44,7 +44,7 @@
           </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <form action="" method="POST" enctype="multipart/form-data">
+          <form action="" method="" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
               <label for="">Name</label>
@@ -78,6 +78,7 @@
   </div>
 </div>
 
+
 @endsection
 
 @push('scripts')
@@ -98,6 +99,20 @@
             { data: 'category_id', name: 'category_id' },
             { data: 'image', name: 'image' },
         ],
+    });
+
+    // delete
+    $('table').on('click', '.btnDestroy', function (e) {
+      e.preventDefault();
+
+      $.ajax({
+        type: "DELETE",
+        url: url+ '/' + $(this).attr('data-url'),
+        success: function (response) {
+          // console.log(response);
+          table.draw();
+        }
+      });
     });
 
     // create - show modal
@@ -134,12 +149,14 @@
     $('table').on('click', '.btnEdit', function (e) {
       e.preventDefault();
 
-      $('#btnSave').attr('id', 'btnUpdate').text('Update')
+      $('#btnSave').attr('id', 'btnUpdate').text('Update');
       
       $.ajax({
         type: "GET",
         url: url+ '/' + $(this).attr('data-url'),
         success: function (response) {
+          $('#btnUpdate').attr('data-url', response.data.id);
+
           $.each(response.data, function (index, value) {
 
             if(value.constructor.name != 'Object') {
@@ -158,21 +175,30 @@
       $('#modelId').modal('show');
     });
 
-    // delete
-    $('table').on('click', '.btnDestroy', function (e) {
-      e.preventDefault();
+    // update
+    $('#modelId').on('click', '#btnUpdate', function (e) {
+        e.preventDefault()
+        var url   = 'api/v1/product/'+$(this).attr('data-url');
+        var form = $('form')[0];
+        var data = new FormData(form);
+        data.append('_method', 'PUT');
 
-      $.ajax({
-        type: "DELETE",
-        url: url+ '/' + $(this).attr('data-url'),
-        success: function (response) {
-          // console.log(response);
-          table.draw();
-        }
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: data,
+          contentType: false,
+          processData: false,
+          cache: false,
+          success: function (response) {
+            console.log(response);
+            $('#modelId').modal('hide');
+            table.draw();
+          }
+        });
       });
-    });
 
-    // store
+
   });
   </script>
 @endpush

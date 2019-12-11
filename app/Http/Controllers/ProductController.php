@@ -61,7 +61,26 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $item       = Product::find($id);
+        $old_image  = 'images/'.$item->image;
+
+        if($request->hasFile('image')):
+
+            file_exists($old_image) ? unlink($old_image) : '';
+            $mime   = $request->file('image')->getClientOriginalExtension();
+            $image  = \Str::slug($request->name).Carbon::now()->format('-YHis'). '.' .$mime;
+            $path   = $request->file('image')->storeAs('images', $image, 'heroku_public');
+
+            $item->update($request->except('image'));
+            $item->update([
+                'image' => $image
+            ]);
+            $item->save();
+        else:
+            $item->update($request->except('image'));
+        endif;
+    
+        return response()->json($item);
     }
 
     public function destroy($id)
