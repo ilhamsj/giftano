@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Resources\ProductCollection;
+use App\Product;
 use Illuminate\Http\Request;
 
 /*
@@ -20,4 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1'], function () {
     Route::resource('product', 'ProductController');
     Route::resource('category', 'CategoryController');
+});
+
+Route::get('tests', function () {
+    return new ProductCollection(Product::all());
 });
