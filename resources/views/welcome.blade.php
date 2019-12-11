@@ -39,7 +39,7 @@
                 <div class="card border-0 bg-transparent">
                     <div class="card-img-top">
                         <img class="img-fluid" style="border-radius:1rem"
-                            data-src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+                            src="images/{{ $item->image }}" alt="" srcset="">
                     </div>
                     <div class="card-body">
                         {{ $item->name}}

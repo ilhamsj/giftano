@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $items = Product::all();
+        $items = Product::orderBy('updated_at', 'desc');
 
         return datatables($items)
             ->addIndexColumn()
@@ -21,7 +21,10 @@ class ProductController extends Controller
                 '<a href="" data-url="'.$items->id.'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i></span></a>
                  <a href="" data-url="'.$items->id.'" class="btnDestroy btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i></span></a>';
             })
-            ->rawColumns(['action'])
+            ->editColumn('image', function ($items) {
+                return '<img class="img-fluid rounded" src="images/'.$items->image.'"/>';
+            })  
+            ->rawColumns(['action', 'image'])
             ->toJson();
     }
 
@@ -65,6 +68,7 @@ class ProductController extends Controller
     {
         $item = Product::find($id);
         $item->delete();
+        unlink('images/'.$item->image);
         return response()->json([
             'item' => $item->name,
             'message' => 'Delete Success'

@@ -65,6 +65,16 @@
     <div class="container">
       <div class="row flex-row-reverse">
         <div class="col col-md-2">
+            <h6>Feature</h6>
+            <a href="Shop" class="text-muted">Shop</a> <br/>
+            <a href="Testimonials" class="text-muted">Testimonials</a> <br/>
+            <a href="MediaKit" class="text-muted">MediaKit</a> <br/>
+            <a href="Advertise" class="text-muted">Advertise</a> <br/>
+            <a href="API" class="text-muted">API</a> <br/>
+            <a href="Apps" class="text-muted">Apps</a> <br/>
+            <a href="Places" class="text-muted">Places</a> <br/>
+        </div>
+        <div class="col col-md-2">
           <h6>{{ env('APP_NAME') }}</h6>
             <a href="#" class="text-muted">About</a><br>
             <a href="#" class="text-muted">Help</a><br>
@@ -74,16 +84,6 @@
             <a href="#" class="text-muted">Guidelines</a><br>
             <a href="#" class="text-muted">Privacy</a><br>
             <a href="#" class="text-muted">Playoffs</a><br>
-        </div>
-        <div class="col col-md-2">
-            <h6>Feature</h6>
-            <a href="Shop" class="text-muted">Shop</a> <br/>
-            <a href="Testimonials" class="text-muted">Testimonials</a> <br/>
-            <a href="MediaKit" class="text-muted">MediaKit</a> <br/>
-            <a href="Advertise" class="text-muted">Advertise</a> <br/>
-            <a href="API" class="text-muted">API</a> <br/>
-            <a href="Apps" class="text-muted">Apps</a> <br/>
-            <a href="Places" class="text-muted">Places</a> <br/>
         </div>
         <div class="col-12 col-md mb-4">
           <h1>{{ env('APP_NAME') }}</h1>

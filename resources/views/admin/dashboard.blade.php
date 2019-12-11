@@ -20,6 +20,7 @@
                     <th>Action</th>
                     <th>Name</th>
                     <th>Category</th>
+                    <th>Image</th>
                   </tr>
                 </thead>
               </table>
@@ -91,6 +92,7 @@
             { data: 'action', name: 'action', orderable: false, searchable: false },
             { data: 'name', name: 'name' },
             { data: 'category_id', name: 'category_id' },
+            { data: 'image', name: 'image' },
         ],
     });
 
@@ -117,7 +119,8 @@
         processData: false,
         cache: false,
         success: function (response) {
-          console.log(response);
+          $('#modelId').modal('hide');
+          table.draw();
         }
       });
       
@@ -149,7 +152,7 @@
         url: url+ '/' + $(this).attr('data-url'),
         success: function (response) {
           console.log(response);
-          table.draw()
+          table.draw();
         }
       });
     });
