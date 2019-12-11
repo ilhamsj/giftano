@@ -68,7 +68,10 @@ class ProductController extends Controller
     {
         $item = Product::find($id);
         $item->delete();
-        unlink('images/'.$item->image);
+        $image = 'images/'.$item->image;
+
+        file_exists($image) ? unlink($image) : '';
+
         return response()->json([
             'item' => $item->name,
             'message' => 'Delete Success'

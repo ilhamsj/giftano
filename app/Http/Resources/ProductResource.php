@@ -19,6 +19,8 @@ class ProductResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'image' => $this->image,
+            'category_id' => $this->category_id,
             'created_at' => $this->created_at->format('d F Y'),
             'category' => new CategoryResource(Category::find($this->category_id)),
         ];

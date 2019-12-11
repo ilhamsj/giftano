@@ -48,19 +48,23 @@
             @csrf
             <div class="form-group">
               <label for="">Name</label>
-              <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
+              <input value="{{ \Faker\Factory::create()->randomElement([ 'Grape', 'Orange', 'Bananas', 'Boysenberries', 'Blueberries', 'Bing Cherry'])
+              }}" type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
             </div>
 
             <div class="form-group">
               <label for="">Category_id</label>
-              <input type="text"
-                class="form-control" name="category_id" id="category_id" aria-describedby="helpId" placeholder="">
-              <small id="helpId" class="form-text text-muted">Help text</small>
+              <input value="{{ \Faker\Factory::create()->randomNumber(1) }}" type="text" class="form-control" name="category_id" id="category_id" aria-describedby="helpId" placeholder="">
             </div>
 
-            <div class="form-group">
-              <label for="">Cover</label>
-              <input type="file" class="form-control-file" name="image" id="image" placeholder="" aria-describedby="fileHelpId">
+            <div class="row">
+              <div class="form-group col">
+                  <img class="img-fluid rounded" src=""/>
+              </div>
+              <div class="form-group col">
+                <label for="">Cover</label>
+                <input type="file" class="form-control-file" name="image" id="image" placeholder="" aria-describedby="fileHelpId">
+              </div>
             </div>
 
           </form>
@@ -136,7 +140,18 @@
         type: "GET",
         url: url+ '/' + $(this).attr('data-url'),
         success: function (response) {
-          console.log(response);
+          $.each(response.data, function (index, value) {
+
+            if(value.constructor.name != 'Object') {
+              if(index != 'image') {
+                $('#modelId').find('#'+index).val(value)
+              } else {
+                $('form').find('img').attr('src', 'images/'+value)
+                console.log(value); 
+              }
+            }
+
+          });
         }
       });
       
@@ -151,7 +166,7 @@
         type: "DELETE",
         url: url+ '/' + $(this).attr('data-url'),
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           table.draw();
         }
       });

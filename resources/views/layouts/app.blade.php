@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
   <style>
     #mainNav {
-      font-size: 12pt;
+      font-size: 10pt;
     }
   </style>
   @stack('styles')
@@ -46,6 +46,13 @@
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mx-auto">
+          @foreach ($menu as $key => $val)
+            <li class="nav-item {{ $val['url'] == URL::current() ? '' : ''}}">
+                <a class="nav-link" href="{{ $val['url']}}">{{ $key }}</a>
+            </li>
+          @endforeach
+      </ul>
       <ul class="navbar-nav ml-auto">
           @foreach ($menu as $key => $val)
             <li class="nav-item {{ $val['url'] == URL::current() ? '' : ''}}">
@@ -64,7 +71,7 @@
   <footer class="py-4 border-top">
     <div class="container">
       <div class="row flex-row-reverse">
-        <div class="col col-md-2">
+        <div class="col col-md-2 mb-4">
             <h6>Feature</h6>
             <a href="Shop" class="text-muted">Shop</a> <br/>
             <a href="Testimonials" class="text-muted">Testimonials</a> <br/>
@@ -74,7 +81,7 @@
             <a href="Apps" class="text-muted">Apps</a> <br/>
             <a href="Places" class="text-muted">Places</a> <br/>
         </div>
-        <div class="col col-md-2">
+        <div class="col col-md-2 mb-4">
           <h6>{{ env('APP_NAME') }}</h6>
             <a href="#" class="text-muted">About</a><br>
             <a href="#" class="text-muted">Help</a><br>
@@ -85,7 +92,7 @@
             <a href="#" class="text-muted">Privacy</a><br>
             <a href="#" class="text-muted">Playoffs</a><br>
         </div>
-        <div class="col-12 col-md mb-4">
+        <div class="col-12 col-md">
           <h1>{{ env('APP_NAME') }}</h1>
             © 2019 {{ env('APP_NAME') }}. All rights reserved.
         </div>
