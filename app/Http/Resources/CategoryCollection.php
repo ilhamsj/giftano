@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Product;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class CategoryCollection extends ResourceCollection
