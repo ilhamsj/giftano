@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -30,8 +31,19 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-    {
-        return response()->json($request->all());
+    {   
+        if($request->hasFile('image')) {
+            $mime   = $request->file('image')->getClientOriginalExtension();
+            $image  = \Str::slug($request->name).Carbon::now()->format('-YHis'). '.' .$mime;
+            $path   = $request->file('image')->storeAs('images', $image, 'heroku_public');
+
+            $product = Product::create($request->all());
+            $product->image = $image;
+            $product->save();
+            return response()->json($product);
+        } else {
+            return response()->json($request->all());
+        }
     }
 
     public function show($id)
@@ -51,7 +63,6 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        // Product::destroy($id);
         $item = Product::find($id);
         $item->delete();
         return response()->json([

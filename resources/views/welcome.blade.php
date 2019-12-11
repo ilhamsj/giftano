@@ -42,7 +42,7 @@
                             data-src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                     </div>
                     <div class="card-body">
-                        {{ \Faker\Factory::create()->name}}
+                        {{ $item->name}}
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                         <img class="img-fluid" style="border-radius:1rem" data-src="holder.js/500x400?auto=yes&random=yes&textmode=exact" alt="" srcset="">
                     </div>
                     <div class="card-body">
-                        {{ $item->name}}
+                        {{ \Faker\Factory::create()->name}}
                     </div>
                 </div>
             </div>

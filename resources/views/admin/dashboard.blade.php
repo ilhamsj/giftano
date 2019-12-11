@@ -51,6 +51,13 @@
             </div>
 
             <div class="form-group">
+              <label for="">Category_id</label>
+              <input type="text"
+                class="form-control" name="category_id" id="category_id" aria-describedby="helpId" placeholder="">
+              <small id="helpId" class="form-text text-muted">Help text</small>
+            </div>
+
+            <div class="form-group">
               <label for="">Cover</label>
               <input type="file" class="form-control-file" name="image" id="image" placeholder="" aria-describedby="fileHelpId">
             </div>

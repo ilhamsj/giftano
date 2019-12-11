@@ -43,6 +43,12 @@ return [
 
     'disks' => [
 
+        'heroku_public' => [
+            'driver' => 'local',
+            'root' => public_path(),
+            'visibility' => 'public',
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
