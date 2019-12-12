@@ -23,5 +23,3 @@ Route::group(['prefix' => 'v1'], function () {
     Route::resource('product', 'ProductController');
     Route::resource('category', 'CategoryController');
 });
-
-Route::get('v1/admin/product', 'AdminController@index');

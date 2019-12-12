@@ -91,7 +91,7 @@
     // show data
     var url = '/api/v1/product';
     var table = $('table').DataTable({
-        order: [ [4, 'desc'] ],
+        order: [ [4, 'desc'], [0, 'desc'] ],
         responsive: true,
         processing: true,
         serverSide: true,
