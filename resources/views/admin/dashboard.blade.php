@@ -36,12 +36,12 @@
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div class="modal-body">
         <div class="container-fluid">
           <form action="" method="" enctype="multipart/form-data">
@@ -54,16 +54,18 @@
 
             <div class="form-group">
               <label for="">Category_id</label>
-              <input value="{{ \Faker\Factory::create()->randomNumber(1) }}" type="text" class="form-control" name="category_id" id="category_id" aria-describedby="helpId" placeholder="">
+              <input value="{{ \Faker\Factory::create()->randomNumber(1) }}" type="text" class="form-control"
+                name="category_id" id="category_id" aria-describedby="helpId" placeholder="">
             </div>
 
             <div class="row">
               <div class="form-group col">
-                  <img class="img-fluid rounded" src=""/>
+                <img class="img-fluid rounded" src="" />
               </div>
               <div class="form-group col">
                 <label for="">Cover</label>
-                <input type="file" class="form-control-file" name="image" id="image" placeholder="" aria-describedby="fileHelpId">
+                <input type="file" class="form-control-file" name="image" id="image" placeholder=""
+                  aria-describedby="fileHelpId">
               </div>
             </div>
 
@@ -83,7 +85,6 @@
 
 @push('scripts')
 <script>
-
   $(document).ready(function () {
     
     // show data
@@ -197,8 +198,6 @@
           }
         });
       });
-
-
   });
-  </script>
+</script>
 @endpush
