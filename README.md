@@ -1,7 +1,4 @@
 # API Documentation
-
-Frontend Demo [giftano.herokuapp.com](https://giftano.herokuapp.com/admin)
-
 Product and category management, a product can belong to a category and the category can have hierarchical structure.
 
 ## Resource
@@ -40,13 +37,13 @@ Product and category management, a product can belong to a category and the cate
 
 ## Category
 
-| Method      | Route                                                                    | Parameter | Notes |
-| ----------- | ------------------------------------------------------------------------ | :-------: | ----- |
-| `GET`       | [`api/v1/category`](https://giftano.herokuapp.com/api/v1/category)       |           |List all resource|
-| `GET`       | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |       |
-| `POST`      | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category)   |   `id`    |       |
-| `PUT/PATCH` | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |       |
-| `DELETE`    | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |       |
+| Method      | Route                                                                    | Parameter | Notes             |
+| ----------- | ------------------------------------------------------------------------ | :-------: | ----------------- |
+| `GET`       | [`api/v1/category`](https://giftano.herokuapp.com/api/v1/category)       |           | List all resource |
+| `GET`       | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |                   |
+| `POST`      | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category)   |   `id`    |                   |
+| `PUT/PATCH` | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |                   |
+| `DELETE`    | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |                   |
 
 ## Product
 
