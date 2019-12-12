@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->randomElement(['Doritos', 'Oriental Super Ring', 'Chanberry', 'Bluberry', 'Lays', 'Muruku', 'Indomilk', 'SgMilk']),
         'category_id' => \App\Category::all()->random(),
         'image' => $faker->randomElement([
                 'banana-2019085304.jpg',

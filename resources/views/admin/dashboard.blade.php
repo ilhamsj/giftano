@@ -97,7 +97,7 @@
         columns: [
             { data: 'action', name: 'action', orderable: false, searchable: false },
             { data: 'name', name: 'name' },
-            { data: 'category_id', name: 'category_id' },
+            { data: 'category', name: 'category' },
             { data: 'image', name: 'image' },
         ],
     });

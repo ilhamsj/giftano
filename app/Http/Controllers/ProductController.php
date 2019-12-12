@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ProductCollection;
+use App\Category;
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
 use App\Product;
 use Carbon\Carbon;
@@ -23,8 +24,11 @@ class ProductController extends Controller
             })
             ->editColumn('image', function ($items) {
                 return '<img class="img-fluid rounded" src="images/'.$items->image.'"/>';
-            })  
-            ->rawColumns(['action', 'image'])
+            })
+            ->editColumn('category', function ($items) {
+                return $items->category->name;
+            })
+            ->rawColumns(['action', 'image', 'category_id'])
             ->toJson();
     }
 
