@@ -4,6 +4,11 @@ Frontend Demo [giftano.herokuapp.com](https://giftano.herokuapp.com/admin)
 
 Product and category management, a product can belong to a category and the category can have hierarchical structure.
 
+## Resource
+
+1. [Category](#Category)
+1. [Product](#Product)
+
 ```json
 {
     "data": [
@@ -28,32 +33,27 @@ Product and category management, a product can belong to a category and the cate
                     }
                 ]
             }
-        },
+        }
     ]
 }
 ```
 
-## Resource
-
--   Category
--   Product
-
 ## Category
 
-| Method    | Route                                                                    | Parameter |
-| --------- | ------------------------------------------------------------------------ | :-------: |
-| GET       | [`api/v1/category`](https://giftano.herokuapp.com/api/v1/category)       |           |
-| GET       | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |
-| POST      | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category)   |   `id`    |
-| PUT/PATCH | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |
-| DELETE    | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |
+| Method      | Route                                                                    | Parameter | Notes |
+| ----------- | ------------------------------------------------------------------------ | :-------: | ----- |
+| `GET`       | [`api/v1/category`](https://giftano.herokuapp.com/api/v1/category)       |           |List all resource|
+| `GET`       | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |       |
+| `POST`      | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category)   |   `id`    |       |
+| `PUT/PATCH` | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |       |
+| `DELETE`    | [`api/v1/category/:id`](https://giftano.herokuapp.com/api/v1/category/1) |   `id`    |       |
 
 ## Product
 
-| Method    | Route                                                                  | Parameter |
-| --------- | ---------------------------------------------------------------------- | :-------: |
-| GET       | [`api/v1/product`](https://giftano.herokuapp.com/api/v1/product)       |           |
-| GET       | [`api/v1/product/:id`](https://giftano.herokuapp.com/api/v1/product/1) |   `id`    |
-| POST      | [`api/v1/product/:id`](https://giftano.herokuapp.com/api/v1/product)   |   `id`    |
-| PUT/PATCH | [`api/v1/product/:id`](https://giftano.herokuapp.com/api/v1/product/1) |   `id`    |
-| DELETE    | [`api/v1/product/:id`](https://giftano.herokuapp.com/api/v1/product/1) |   `id`    |
+| Method      | Route                                                                  | Parameter | Notes |
+| ----------- | ---------------------------------------------------------------------- | :-------: | ----- |
+| `GET`       | [`api/v1/product`](https://giftano.herokuapp.com/api/v1/product)       |           |       |
+| `GET`       | [`api/v1/product/:id`](https://giftano.herokuapp.com/api/v1/product/1) |   `id`    |       |
+| `POST`      | [`api/v1/product/:id`](https://giftano.herokuapp.com/api/v1/product)   |   `id`    |       |
+| `PUT/PATCH` | [`api/v1/product/:id`](https://giftano.herokuapp.com/api/v1/product/1) |   `id`    |       |
+| `DELETE`    | [`api/v1/product/:id`](https://giftano.herokuapp.com/api/v1/product/1) |   `id`    |       |
