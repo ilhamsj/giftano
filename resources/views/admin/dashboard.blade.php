@@ -21,6 +21,7 @@
                     <th>Name</th>
                     <th>Category</th>
                     <th>Image</th>
+                    <th>Updated</th>
                   </tr>
                 </thead>
               </table>
@@ -90,6 +91,7 @@
     // show data
     var url = '/api/v1/product';
     var table = $('table').DataTable({
+        order: [ [4, 'desc'] ],
         responsive: true,
         processing: true,
         serverSide: true,
@@ -99,6 +101,7 @@
             { data: 'name', name: 'name' },
             { data: 'category', name: 'category' },
             { data: 'image', name: 'image' },
+            { data: 'updated_at', name: 'updated_at' },
         ],
     });
 

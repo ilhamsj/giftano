@@ -1,5 +1,8 @@
 # API Documentation
+
 Product and category management, a product can belong to a category and the category can have hierarchical structure.
+
+Faker : `php artisan db:seed`
 
 ## Resource
 

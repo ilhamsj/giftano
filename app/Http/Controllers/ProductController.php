@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
 use App\Product;
 use Carbon\Carbon;
@@ -13,14 +11,14 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $items = Product::orderBy('updated_at', 'desc');
+        $items = Product::all();
 
         return datatables($items)
             ->addIndexColumn()
             ->addColumn('action', function ($items) {
                 return 
                 '<a href="" data-url="'.$items->id.'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i></span></a>
-                 <a href="" data-url="'.$items->id.'" class="btnDestroy btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i></span></a>';
+                <a href="" data-url="'.$items->id.'" class="btnDestroy btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i></span></a>';
             })
             ->editColumn('image', function ($items) {
                 return '<img class="img-fluid rounded" src="images/'.$items->image.'"/>';
@@ -28,13 +26,13 @@ class ProductController extends Controller
             ->editColumn('category', function ($items) {
                 return $items->category->name;
             })
-            ->rawColumns(['action', 'image', 'category_id'])
+            ->rawColumns(['action', 'image', 'category'])
             ->toJson();
     }
 
     public function create()
     {
-        //
+        
     }
 
     public function store(Request $request)
