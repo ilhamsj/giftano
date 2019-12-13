@@ -21,7 +21,7 @@ class AdminController extends Controller
                 <a href="" data-url="'.$items->id.'" class="btnDestroy btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i></span></a>';
             })
             ->editColumn('image', function ($items) {
-                return '<img class="img-fluid rounded" src="images/'.$items->image.'"/>';
+                return '<img class="img-fluid rounded" src="'.$items->image.'"/>';
             })
             ->editColumn('category', function ($items) {
                 return $items->category->name;

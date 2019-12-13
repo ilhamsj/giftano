@@ -22,4 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1'], function () {
     Route::resource('product', 'ProductController');
     Route::resource('category', 'CategoryController');
+    Route::group(['prefix' => 'admin'], function () {
+        Route::resource('product', 'AdminController');
+    });
 });

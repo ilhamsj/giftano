@@ -89,7 +89,7 @@
   $(document).ready(function () {
     
     // show data
-    var url = '/api/v1/product';
+    var url = '/api/v1/admin/product';
     var table = $('table').DataTable({
         order: [ [4, 'desc'], [0, 'desc'] ],
         responsive: true,
