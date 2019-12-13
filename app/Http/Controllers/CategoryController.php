@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Resources\CategoryCollection;
-use App\Http\Resources\CategoryResource;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Requests\CategoryRequest;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\CategoryCollection;
 
 class CategoryController extends Controller
 {
@@ -19,10 +22,13 @@ class CategoryController extends Controller
         
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $item = Category::create($request->all());
-        return new CategoryResource($item);
+        return response()->json([
+            'data' => $item,
+            'status' => 'store success' 
+        ]);
     }
 
     public function show($id)
@@ -37,17 +43,24 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => Rule::requiredIf($request->has('name'))
+        ]);
+
         $item = Category::find($id);
         $item->update($request->all());
 
-        return new CategoryResource($item);
+        return response()->json([
+            'data' => $item,
+            'status' => 'update success' 
+        ]);
     }
 
     public function destroy($id)
     {
         Category::destroy($id);
-        return new CategoryResource([
-            'status' => 'berhasil',
-        ]);   
+        return response()->json([
+            'status' => 'delete success' 
+        ]);
     }
 }
