@@ -2,18 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use App\Http\Resources\ProductResource;
-use App\Http\Resources\ProductCollection;
 
-class ProductController extends Controller
+class AdminController extends Controller
 {
     public function index()
     {
-        return new ProductCollection(Product::all());
+        $items = Product::all();
+
+        return datatables($items)
+            ->addIndexColumn()
+            ->addColumn('action', function ($items) {
+                return 
+                '<a href="" data-url="'.$items->id.'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i></span></a>
+                <a href="" data-url="'.$items->id.'" class="btnDestroy btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i></span></a>';
+            })
+            ->editColumn('image', function ($items) {
+                return '<img class="img-fluid rounded" src="images/'.$items->image.'"/>';
+            })
+            ->editColumn('category', function ($items) {
+                return $items->category->name;
+            })
+            ->rawColumns(['action', 'image', 'category'])
+            ->toJson();
     }
 
     public function create()
@@ -22,27 +36,19 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'name'          => 'required',
-            'image'         => 'required',
-            'category_id'   => 'required',
-        ]);
-
-        $product = Product::create($request->all());
-
+    {   
         if($request->hasFile('image')) {
             $mime   = $request->file('image')->getClientOriginalExtension();
             $image  = \Str::slug($request->name).Carbon::now()->format('-YHis'). '.' .$mime;
             $path   = $request->file('image')->storeAs('images', $image, 'heroku_public');
 
-            $product->image = env('APP_URL').'images/'.$image;
+            $product = Product::create($request->all());
+            $product->image = $image;
             $product->save();
+            return response()->json($product);
+        } else {
+            return response()->json($request->all());
         }
-        return response()->json([
-            'item'  => $product,
-            'status'    => 'store success'
-        ]);
     }
 
     public function show($id)
@@ -57,17 +63,11 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => Rule::requiredIf($request->has('name')),
-            'image' => Rule::requiredIf($request->has('image')),
-            'category_id' => Rule::requiredIf($request->has('category_id')),
-        ]);
-        
-        $item = Product::find($id);
-        
+        $item       = Product::find($id);
+        $old_image  = 'images/'.$item->image;
+
         if($request->hasFile('image')):
-            
-            $old_image  = 'images/'.$item->image;
+
             file_exists($old_image) ? unlink($old_image) : '';
             $mime   = $request->file('image')->getClientOriginalExtension();
             $image  = \Str::slug($request->name).Carbon::now()->format('-YHis'). '.' .$mime;
@@ -75,17 +75,14 @@ class ProductController extends Controller
 
             $item->update($request->except('image'));
             $item->update([
-                'image' => env('APP_URL').'images/'.$image
+                'image' => $image
             ]);
             $item->save();
         else:
             $item->update($request->except('image'));
         endif;
     
-        return response()->json([
-            'item'      => $item,
-            'status'    => 'update success'
-        ]);
+        return response()->json($item);
     }
 
     public function destroy($id)
@@ -102,3 +99,4 @@ class ProductController extends Controller
         ], 200);
     }
 }
+

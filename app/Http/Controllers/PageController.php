@@ -13,8 +13,8 @@ class PageController extends Controller
         $product = Product::paginate(12);
         
         return view('welcome')->with([
-            'products'   => $product,
-            'categories'  => $category,
+            'products'      => $product,
+            'categories'    => $category,
         ]);
     }
 

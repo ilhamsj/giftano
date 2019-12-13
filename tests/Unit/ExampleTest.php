@@ -14,6 +14,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $this->assertTrue(true);
+        $response = $this->get('/api/v1/product');
+        $response->assertStatus(200);
     }
 }
